@@ -88,7 +88,10 @@ const verifyPayment = async (order_id: string) => {
 
   return verifiedPayment;
 };
-const updateOrderStatus = async (order_id: string, status: string) => {
+const updateOrderStatus = async (
+  order_id: string,
+  status: 'Pending' | 'Paid' | 'Shipped' | 'Completed' | 'Cancelled',
+) => {
   const order = await Order.findById(order_id);
   if (!order) {
     throw new Error('Order not found');
